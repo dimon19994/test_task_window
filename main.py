@@ -227,7 +227,10 @@ class MainWindow(QMainWindow):
 
         for i, row in enumerate(list_values[position:]):
             for j, value in enumerate(row):
-                self.ui.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
+                if value:
+                    self.ui.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
+                else:
+                    self.ui.tableWidget.setItem(i, j, QTableWidgetItem(""))
 
     def _open_file(self):
         path, file_type = QFileDialog.getOpenFileName(
